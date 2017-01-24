@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.postgres.fields import JSONField
-from torfind.settings import TORRENT_ROOT
 # Create your models here.
 
 
