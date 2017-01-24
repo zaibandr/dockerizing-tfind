@@ -1,0 +1,10 @@
+<form type="get" action="{% url 'search_form' %}" class="autocomplete-me">
+    <div class="input-group">
+        <input type="search" name="q" class="form-control" placeholder="Search for...">
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">Go!</button>
+        </span>
+    </div><!-- /input-group -->
+</form>
+
+{% include "find_torrent/autocomplete.html" %}
