@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.postgres',
 
-    'find_torrent',
+    'docker_django.apps.find_torrent',
 
     'haystack',
 
