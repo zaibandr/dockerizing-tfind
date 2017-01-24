@@ -22,5 +22,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     #url(r'^tfind/', include('find_torrent.urls')),
 
-    url(r'^', include('find_torrent.urls')),
+    url(r'^', include('docker_django.apps.find_torrent.urls')),
 ]
