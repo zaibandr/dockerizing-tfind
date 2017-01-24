@@ -20,12 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '+j^8r&eqvguh__8=@#pyk8yn#zh9ch&g3ic46rz1@-b%rcn#)m'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.94', '192.168.1.57', '192.168.1.241']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -63,13 +63,12 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'torfind.urls'
+ROOT_URLCONF = 'docker_django.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -90,19 +89,19 @@ WSGI_APPLICATION = 'torfind.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'tfind_db',
-        'USER': 'tfind',
-        'PASSWORD': 'xok43tra',
-        'HOST': '192.168.1.241',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ['DB_NAME'],
+        'USER': os.environ['DB_USER'],
+        'PASSWORD': os.environ['DB_PASS'],
+        'HOST': os.environ['DB_SERVICE'],
+        'PORT': os.environ['DB_PORT']
     }
 }
 
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-        'URL': 'http://192.168.1.241:9200/',
+        'URL': 'elastic:9200/',
         'INDEX_NAME': 'haystack',
         'INCLUDE_SPELLING': True,
     },
@@ -148,8 +147,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
-TORRENT_ROOT = os.path.join(STATIC_ROOT, 'torrent')
-
-CELERY_RESULT_BACKEND = 'django-db'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
