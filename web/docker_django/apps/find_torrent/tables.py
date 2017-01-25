@@ -6,7 +6,7 @@ from .models import Torrent
 class MagnetColumn(tables.Column):
     def render(self, value):
         link_title = "Download this torrent using magnet"
-        img_src = "http://s.rutor.info/i/m.png"
+        img_src = "https://s3-eu-west-1.amazonaws.com/zaibandr/magnet.png"
         return format_html('<a href="{}"><img src="{}" alt="M" title="{}"></a>', str(value), img_src, link_title)
 
 
