@@ -1,20 +1,24 @@
-from django.shortcuts import render, render_to_response
+import json
+import logging
+import re
+import os
+
 from django.http import HttpResponse
 from django.shortcuts import redirect
-
-from .models import Torrent, Trend
-from .forms import TorrentSearchForm
-
-from .tables import TorrentTable
+from django.shortcuts import render, render_to_response
 from django_tables2 import RequestConfig
-
-from haystack.query import SearchQuerySet
 from haystack.inputs import AutoQuery, Clean
+from haystack.query import SearchQuerySet
 
-import json
-import re
+from .forms import TorrentSearchForm
+from .models import Torrent, Trend
+from .tables import TorrentTable
 
-import logging
+from redis import Redis
+
+
+redis = Redis(host=os.environ['REDIS_HOST'], port=6379, password=os.environ['REDIS_PSWD'], db=2)
+
 # Get an instance of a logger
 logging.basicConfig(format='%(asctime)s %(message)s', filename='search.log')
 logger = logging.getLogger(__name__)
@@ -57,6 +61,7 @@ def url_parse_search(request, trend):
     #     return redirect('/torrent/{}'.format(slugify(trend)))
 
     trend = Clean(trend).__str__()
+    redis.incr(trend)
     print(trend)
     try:
         Trend.objects.create(title=trend)
