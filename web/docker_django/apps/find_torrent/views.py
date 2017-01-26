@@ -64,7 +64,7 @@ def url_parse_search(request, trend):
     #     print(slugify(trend))
     #     return redirect('/torrent/{}'.format(slugify(trend)))
 
-    trend = Clean(trend).__str__()
+    trend = Clean(trend).__str__().replace('_', ' ')
     redis.incr(trend)
     print(trend)
     try:
