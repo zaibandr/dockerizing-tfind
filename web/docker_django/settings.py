@@ -103,7 +103,7 @@ DATABASES = {
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-        'URL': '{}:{}'.format(os.environ['ES_HOST'], os.environ['ES_PORT']),
+        'URL': '{}:{}'.format(os.environ['ES_URL'], os.environ['ES_PORT']),
         'INDEX_NAME': 'haystack',
         'INCLUDE_SPELLING': True,
     },
