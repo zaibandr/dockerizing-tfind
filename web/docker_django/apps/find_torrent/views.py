@@ -32,16 +32,20 @@ def sqs_to_qs(search_qs):
         yield item.object
 
 
+def index(request):
+    return render_to_response('find_torrent/index.html')
+
+
 def torrent_search_form(request):
+
+    q = Clean(request.GET.get('q', '')).__str__().lower()
+    print(q)
+    q = q.replace(' ', '_')
+    if len(q) >= 2:
+        return redirect('/torrents/{}'.format(q))
 
     form = TorrentSearchForm(request.GET)
     torrents = form.search()[:50]
-
-    q = Clean(request.GET.get('q', '')).__str__()
-    print(q)
-    q = q.replace(' ', '+')
-    if len(q) >= 2:
-        return redirect('/torrents/{}'.format(q))
 
     # print(torrents)
     context = {
