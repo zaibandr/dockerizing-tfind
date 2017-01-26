@@ -11,8 +11,6 @@ from django_tables2 import RequestConfig
 from haystack.query import SearchQuerySet
 from haystack.inputs import AutoQuery, Clean
 
-from django.utils.text import slugify
-
 import json
 import re
 
