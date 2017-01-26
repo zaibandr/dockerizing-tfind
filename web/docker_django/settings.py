@@ -121,7 +121,6 @@ CACHEOPS_REDIS = {
 
     'socket_timeout': 3,   # connection timeout in seconds, optional
     'password': os.environ['REDIS_PSWD'],     # optional
-    'unix_socket_path': '' # replaces host and port
 }
 
 CACHEOPS_DEFAULTS = {
