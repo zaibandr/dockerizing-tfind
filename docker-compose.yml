@@ -41,10 +41,13 @@ elastic:
   ports:
     - "9200:9200"
     - "9300:9300"
+  volumes:
+    - esdata:/usr/share/elasticsearch/data
 
 redis:
   restart: always
   image: redis:latest
+  command: redis-server --requirepass redis
   ports:
     - "6379:6379"
   volumes:

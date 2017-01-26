@@ -46,7 +46,9 @@ INSTALLED_APPS = [
 
     'django_tables2',
 
-    'bootstrap3'
+    'bootstrap3',
+
+    'cacheops'
 
 
 ]
@@ -108,6 +110,23 @@ HAYSTACK_CONNECTIONS = {
 }
 
 # HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
+
+CACHEOPS_REDIS = {
+    'host': os.environ['REDIS_HOST'], # redis-server is on same machine
+    'port': os.environ['REDIS_PORT'],        # default redis port
+    'db': 1,             # SELECT non-default redis database
+                         # using separate redis db or redis instance
+                         # is highly recommended
+
+    'socket_timeout': 3,   # connection timeout in seconds, optional
+    'password': os.environ['REDIS_PSWD'],     # optional
+    'unix_socket_path': '' # replaces host and port
+}
+
+CACHEOPS_DEFAULTS = {
+    'timeout': 60*60
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
