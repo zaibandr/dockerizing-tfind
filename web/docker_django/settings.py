@@ -128,6 +128,11 @@ CACHEOPS_DEFAULTS = {
     'timeout': 60*60
 }
 
+CACHEOPS = {
+    'auth.user': {'ops': 'get', 'timeout': 60*15},
+    'find_torrent.*': {'ops': 'all'},
+    '*.*': {},
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
