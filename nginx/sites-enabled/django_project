@@ -1,4 +1,10 @@
 server {
+    listen       80;
+    server_name  www.tfind.ru;
+    return       301 http://tfind.ru$request_uri;
+}
+
+server {
 
     listen 80;
     server_name tfind.ru;
