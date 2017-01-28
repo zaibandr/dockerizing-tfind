@@ -39,8 +39,8 @@ elastic:
   restart: always
   image: elasticsearch:2.4.4
   ports:
-    - "9200"
-    - "9300"
+    - "9200:9200"
+    - "9300:9300"
   volumes:
     - esdata:/usr/share/elasticsearch/data
 
