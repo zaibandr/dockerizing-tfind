@@ -39,7 +39,6 @@ elastic:
   restart: always
   image: elasticsearch:2.4.4
   mem_limit: 250m
-  cpu_shares: 0.5
   ports:
     - "9200:9200"
     - "9300:9300"
