@@ -92,7 +92,7 @@ def url_parse_search(request, trend):
 
     context = {
         'torrents': torrents,
-        'get': request.GET
+        'trend': trend
     }
 
     logger.info(request.GET)

@@ -47,6 +47,7 @@ elastic:
 redis:
   restart: always
   image: redis:latest
+  mem_limit: 350m
   command: redis-server --requirepass redis
   ports:
     - "6379:6379"
