@@ -67,13 +67,13 @@ def url_parse_search(request, trend):
     #     return redirect('/torrent/{}'.format(slugify(trend)))
 
     trend = Clean(trend).__str__().replace('_', ' ')
-    redis.incr(trend)
+    # redis.incr(trend)
     print(trend)
 
-    # try:
-    #     Trend.objects.create(title=trend)
-    # except Exception as e:
-    #     print(e)
+    try:
+        Trend.objects.create(title=trend, priority=1)
+    except Exception as e:
+        Trend.objects.filter(title=trend).update(priority=F('priority')+1)
 
     # get q in Elastic
     torrents = SearchQuerySet().values('pk').filter(title=AutoQuery(trend))[:200]
