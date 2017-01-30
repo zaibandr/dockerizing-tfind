@@ -133,7 +133,7 @@ def autocomplete(request):
     the_data = json.dumps(suggestions)
     return HttpResponse(the_data, content_type='application/json')
 
-
+"""
 def stats(request):
 
     path = Clean(urlparse(request.META['HTTP_REFERER']).path).__str__()
@@ -146,3 +146,4 @@ def stats(request):
     #     Trend.objects.filter(title=trend).update(priority=F('priority')+1)
 
     return HttpResponse("ok", content_type='application/json')
+"""
