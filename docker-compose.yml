@@ -14,29 +14,6 @@ web:
     DEBUG: 'true'
   command: /usr/local/bin/gunicorn docker_django.wsgi:application -w 2 -b :8000 --reload
 
-mom_db:
-  image: mysql:5.7
-  volumes:
-    - mom_db_data:/var/lib/mysql
-  restart: always
-  environment:
-    MYSQL_ROOT_PASSWORD: wordpress
-    MYSQL_DATABASE: wordpress
-    MYSQL_USER: wordpress
-    MYSQL_PASSWORD: wordpress
-
-mom_wp:
-  depends_on:
-    - mom_db
-  image: wordpress:latest
-  ports:
-    - "5000:80"
-  restart: always
-  environment:
-    WORDPRESS_DB_HOST: mom_db:3306
-    WORDPRESS_DB_PASSWORD: wordpress
-
-
 nginx:
   restart: always
   build: ./nginx/
@@ -48,7 +25,6 @@ nginx:
     - web
   links:
     - web:web
-    - mom_wp:mom_wp
 
 postgres:
   restart: always
