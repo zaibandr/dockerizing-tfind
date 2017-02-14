@@ -4,6 +4,7 @@ server {
     return       301 http://panagova.ru$request_uri;
 }
 
+
 server {
 
     listen 80;
