@@ -1,14 +1,7 @@
 server {
-    listen       80;
-    server_name  www.panagova.ru;
-    return       301 http://panagova.ru$request_uri;
-}
-
-
-server {
 
     listen 80;
-    server_name panagova.ru;
+    server_name www.panagova.ru panagova.ru;
     charset utf-8;
 
     location / {
