@@ -7,32 +7,12 @@ web:
     - postgres:postgres
     - redis:redis
   volumes:
-    - /usr/src/app/static
-  env_file: .env
-  command: /usr/local/bin/gunicorn docker_django.wsgi:application -w 2 -b :8000
-
-mom_db:
-  image: mysql:5.7
-  volumes:
-    - mom_db_data:/var/lib/mysql
-  restart: always
+    - webdata_app:/usr/src/app
+    - webdata_static:/usr/src/app/static
+  env_file: .env_prod
   environment:
-    MYSQL_ROOT_PASSWORD: wordpress
-    MYSQL_DATABASE: wordpress
-    MYSQL_USER: wordpress
-    MYSQL_PASSWORD: wordpress
-
-mom_wp:
-  depends_on:
-    - mom_db
-  image: wordpress:latest
-  ports:
-    - "5000:80"
-  restart: always
-  environment:
-    WORDPRESS_DB_HOST: mom_db:3306
-    WORDPRESS_DB_PASSWORD: wordpress
-
+    DEBUG: 'true'
+  command: /usr/local/bin/gunicorn docker_django.wsgi:application -w 2 -b :8000 --reload
 
 nginx:
   restart: always
@@ -45,20 +25,30 @@ nginx:
     - web
   links:
     - web:web
-    - mom_wp:mom_wp
 
 postgres:
   restart: always
   image: postgres:latest
   ports:
-    - "5432"
+    - "5432:5432"
   volumes:
     - pgdata:/var/lib/postgresql/data/
+
+elastic:
+  restart: always
+  image: elasticsearch:2.4.4
+  ports:
+    - "9200:9200"
+    - "9300:9300"
+  volumes:
+    - esdata:/usr/share/elasticsearch/data
 
 redis:
   restart: always
   image: redis:latest
+  mem_limit: 350m
+  command: redis-server --requirepass redis
   ports:
-    - "6379"
+    - "6379:6379"
   volumes:
     - redisdata:/data

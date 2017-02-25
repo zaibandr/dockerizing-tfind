@@ -1,4 +1,5 @@
 import psycopg2
+
 conn = psycopg2.connect(
     database='tfind_db',
     user='tfind',
