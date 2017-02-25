@@ -12,9 +12,9 @@ server {
         alias /usr/src/app/static/robots.txt;
     }
 
-    # location = /favicon.ico {
-    #     alias /usr/src/app/static/images/favicon.X.ico;
-    # }
+    location = /favicon.ico {
+        alias /usr/src/app/static/img/favicon.png;
+    }
 
     location / {
         proxy_pass http://web:8000;
