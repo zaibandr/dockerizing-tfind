@@ -8,7 +8,7 @@ server {
         alias /usr/src/app/static;
     }
 
-    location = /robots.txt {
+    location /robots.txt {
         alias /usr/src/app/static/robots.txt;
     }
 
