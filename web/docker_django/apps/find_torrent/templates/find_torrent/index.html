@@ -10,9 +10,11 @@
     <div class="container col-xs-12 col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2 vcenter">
         <div class="col-xs-12 col-md-10 col-lg-9 col-md-offset-1 vcenter">
             <div style="height:16em"></div>
-            <a class="navbar-brand" href="/">
-                <img src="{% static "img/logo.png" %}">
-            </a>
+            <div style="display: flex; justify-content: center">
+                <a href="/">
+                    <img src="{% static "img/logo.png" %}">
+                </a>
+            </div>
             {% include "find_torrent/search.html" %}
         </div>
     </div>
