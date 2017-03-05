@@ -1,13 +1,7 @@
 from scrapy.contrib.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
-from scrapy.contrib.loader.processor import TakeFirst
-from scrapy.contrib.loader import XPathItemLoader
 
 from scraper.parsers import extratorrent_to_torrent
-
-
-class Fast_Torrent_Loader(XPathItemLoader):
-    default_output_processor = TakeFirst()
 
 
 class Fast_Torrent(CrawlSpider):

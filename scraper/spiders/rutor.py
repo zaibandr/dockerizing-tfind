@@ -1,8 +1,5 @@
 from scrapy.contrib.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
-from scrapy.contrib.loader.processor import TakeFirst
-from scrapy.contrib.loader import XPathItemLoader
-
 
 from scraper.parsers import rutor_to_torrent
 
@@ -17,10 +14,6 @@ conn = psycopg2.connect(
 )
 
 cur = conn.cursor()
-
-
-class Fast_Torrent_Loader(XPathItemLoader):
-    default_output_processor = TakeFirst()
 
 
 class Fast_Torrent(CrawlSpider):
