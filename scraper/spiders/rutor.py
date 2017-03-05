@@ -3,18 +3,6 @@ from scrapy.linkextractors import LinkExtractor
 
 from scraper.parsers import rutor_to_torrent
 
-import psycopg2
-
-conn = psycopg2.connect(
-    database='tfind_db',
-    user='tfind',
-    password='xok43tra',
-    host='192.168.1.241',
-    port='5432'
-)
-
-cur = conn.cursor()
-
 
 class Fast_Torrent(CrawlSpider):
     name = "rutor.info"
