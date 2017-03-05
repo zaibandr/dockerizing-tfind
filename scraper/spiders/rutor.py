@@ -4,7 +4,7 @@ from scrapy.contrib.loader.processor import TakeFirst
 from scrapy.contrib.loader import XPathItemLoader
 
 
-from find_torrent.scraper.parsers import rutor_to_torrent
+from scraper.parsers import rutor_to_torrent
 
 import psycopg2
 

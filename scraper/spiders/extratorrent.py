@@ -3,7 +3,7 @@ from scrapy.linkextractors import LinkExtractor
 from scrapy.contrib.loader.processor import TakeFirst
 from scrapy.contrib.loader import XPathItemLoader
 
-from find_torrent.scraper.parsers import extratorrent_to_torrent
+from scraper.parsers import extratorrent_to_torrent
 
 
 class Fast_Torrent_Loader(XPathItemLoader):
