@@ -13,7 +13,6 @@ import os
 BOT_NAME = 'find_torrent'
 
 SPIDER_MODULES = ['scraper.spiders']
-NEWSPIDER_MODULE = 'scraper.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
