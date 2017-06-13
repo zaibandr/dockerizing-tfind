@@ -9,6 +9,6 @@ class TorrentAdmin(admin.ModelAdmin):
     pass
 
 @admin.register(Trend)
-class TrebdAdmin(admin.ModelAdmin):
+class TrendAdmin(admin.ModelAdmin):
     pass
 
