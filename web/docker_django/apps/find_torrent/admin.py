@@ -1,14 +1,9 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Torrent, 
+from .models import Torrent, Trend
 
 
-@admin.register(Torrent)
-class TorrentAdmin(admin.ModelAdmin):
-    pass
-
-@admin.register(Trend)
-class TrendAdmin(admin.ModelAdmin):
-    pass
+admin.site.register(Torrent)
+admin.site.register(Trend)
 
