@@ -1,10 +1,11 @@
+import os
 import psycopg2
 
 conn = psycopg2.connect(
-    database='tfind_db',
-    user='tfind',
-    password='xok43tra',
-    host='185.125.219.105',
+    database=os.environ['DB_NAME'],
+    user=os.environ['DB_USER'],
+    password=os.environ['DB_PASS'],
+    host=os.environ['SERVER_IP'],
     port='5432'
 )
 cur = conn.cursor()
