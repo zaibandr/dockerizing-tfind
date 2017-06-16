@@ -1,4 +1,4 @@
-from web.docker_django.apps.find_torrent.magnet.scraper_tracker import scrape
+from scraper_tracker import scrape
 
 import time
 import os
