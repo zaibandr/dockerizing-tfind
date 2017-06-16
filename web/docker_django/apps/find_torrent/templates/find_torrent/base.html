@@ -9,9 +9,11 @@
 
     {% include "find_torrent/autocomplete_style.html" %}
 
-    {% block title %}
-        TFind - торрент поисковик || Найти с скачать торрент бесплатно
-    {% endblock %}
+    <title>
+        {% block title %}
+
+        {% endblock %}
+    </title>
 
 </head>
 <body>
@@ -19,6 +21,21 @@
     
     {% endblock %}
 
+    <footer class="footer">
+      <div class="container col-xs-12 col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+        <div class="dropup" style="margin-top: 10px">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="glyphicon glyphicon-menu-hamburger"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <li><a href="#">Foo</a></li>
+            <li><a href="#">Bar</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="/">Home</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

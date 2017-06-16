@@ -1,26 +1,7 @@
 from scrapy.contrib.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
-from scrapy.contrib.loader.processor import TakeFirst
-from scrapy.contrib.loader import XPathItemLoader
 
-
-from find_torrent.scraper.parsers import rutor_to_torrent
-
-import psycopg2
-
-conn = psycopg2.connect(
-    database='tfind_db',
-    user='tfind',
-    password='xok43tra',
-    host='192.168.1.241',
-    port='5432'
-)
-
-cur = conn.cursor()
-
-
-class Fast_Torrent_Loader(XPathItemLoader):
-    default_output_processor = TakeFirst()
+from scraper.parsers import rutor_to_torrent
 
 
 class Fast_Torrent(CrawlSpider):

@@ -19,9 +19,8 @@ nginx:
   build: ./nginx/
   ports:
     - "80:80"
-    - "443:443"
   volumes:
-    - nginxdata:/www/static
+    - /www/static
   volumes_from:
     - web
   links:
@@ -47,6 +46,7 @@ elastic:
 redis:
   restart: always
   image: redis:latest
+  mem_limit: 350m
   command: redis-server --requirepass redis
   ports:
     - "6379:6379"

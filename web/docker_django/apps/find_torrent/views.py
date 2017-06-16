@@ -2,6 +2,7 @@ import json
 import logging
 import re
 import os
+from urllib.parse import urlparse
 
 from django.http import HttpResponse
 from django.shortcuts import redirect
@@ -9,6 +10,7 @@ from django.shortcuts import render, render_to_response
 from django_tables2 import RequestConfig
 from haystack.inputs import AutoQuery, Clean
 from haystack.query import SearchQuerySet
+from django.db.models import F
 
 from .forms import TorrentSearchForm
 from .models import Torrent, Trend
@@ -65,13 +67,13 @@ def url_parse_search(request, trend):
     #     return redirect('/torrent/{}'.format(slugify(trend)))
 
     trend = Clean(trend).__str__().replace('_', ' ')
-    redis.incr(trend)
+    # redis.incr(trend)
     print(trend)
 
-    # try:
-    #     Trend.objects.create(title=trend)
-    # except Exception as e:
-    #     print(e)
+    try:
+        Trend.objects.create(title=trend, priority=1)
+    except Exception as e:
+        Trend.objects.filter(title=trend).update(priority=F('priority')+1)
 
     # get q in Elastic
     torrents = SearchQuerySet().values('pk').filter(title=AutoQuery(trend))[:200]
@@ -92,7 +94,7 @@ def url_parse_search(request, trend):
 
     context = {
         'torrents': torrents,
-        'get': request.GET
+        'trend': trend
     }
 
     logger.info(request.GET)
@@ -130,3 +132,18 @@ def autocomplete(request):
     # Otherwise, you could be vulnerable to an XSS attack.
     the_data = json.dumps(suggestions)
     return HttpResponse(the_data, content_type='application/json')
+
+"""
+def stats(request):
+
+    path = Clean(urlparse(request.META['HTTP_REFERER']).path).__str__()
+    trend = path.split('/')[-1].replace('_', ' ')
+
+    redis.incr(trend)
+    # try:
+    #     Trend.objects.create(title=trend, priority=1)
+    # except Exception as e:
+    #     Trend.objects.filter(title=trend).update(priority=F('priority')+1)
+
+    return HttpResponse("ok", content_type='application/json')
+"""

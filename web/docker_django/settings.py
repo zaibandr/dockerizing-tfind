@@ -104,6 +104,7 @@ HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
         'URL': '{}:{}'.format(os.environ['ES_URL'], os.environ['ES_PORT']),
+        'TIMEOUT': 60 * 5,
         'INDEX_NAME': 'haystack',
         'INCLUDE_SPELLING': True,
     },

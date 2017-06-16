@@ -5,7 +5,7 @@
 
 {% block table %}
     <div class="table-responsive">
-    <table class="table table-bordered table-hover"{% if table.attrs %} {{ table.attrs.as_html }}{% endif %}>
+    <table class="table table-bordered table-hover table-striped"{% if table.attrs %} {{ table.attrs.as_html }}{% endif %}>
         {% block table.thead %}
             <thead>
             <tr>

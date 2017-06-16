@@ -12,8 +12,7 @@ import os
 
 BOT_NAME = 'find_torrent'
 
-SPIDER_MODULES = ['find_torrent.scraper.spiders']
-NEWSPIDER_MODULE = 'scraper.spiders'
+SPIDER_MODULES = ['scraper.spiders']
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -72,7 +71,7 @@ DOWNLOADER_MIDDLEWARES = {
     'scrapy.contrib.downloadermiddleware.cookies.CookiesMiddleware': 700
 }
 
-PROXY_LIST = os.path.join(os.path.abspath('.'), 'find_torrent', 'scraper', 'proxy_list.txt')
+PROXY_LIST = os.path.join(os.path.abspath('.'), 'scraper', 'proxy_list.txt')
 
 
 # Proxy mode

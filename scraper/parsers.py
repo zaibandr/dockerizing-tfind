@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import re
 import requests
 
-from find_torrent.scraper.db_insert import insert_torrent_db
+from .db_insert import insert_torrent_db
 
 
 def extratorrent_to_torrent(html):

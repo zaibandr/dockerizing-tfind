@@ -1,13 +1,14 @@
-from find_torrent.magnet.scraper_tracker import scrape
+from scraper_tracker import scrape
 
 import time
+import os
 import psycopg2
 
 conn = psycopg2.connect(
-    database='tfind_db',
-    user='tfind',
-    password='xok43tra',
-    host='192.168.1.241',
+    database=os.environ['DB_NAME'],
+    user=os.environ['DB_USER'],
+    password=os.environ['DB_PASS'],
+    host=os.environ['SERVER_IP'],
     port='5432'
 )
 

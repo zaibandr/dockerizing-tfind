@@ -1,7 +1,7 @@
 from scrapy.contrib.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
 
-from find_torrent.scraper.parsers import thepiratebay_to_torrent
+from scraper.parsers import thepiratebay_to_torrent
 
 
 class The_Pirate_Bay(CrawlSpider):

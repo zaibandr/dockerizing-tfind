@@ -1,10 +1,4 @@
 server {
-    listen       80;
-    server_name  www.tfind.ru;
-    return       301 http://tfind.ru$request_uri;
-}
-
-server {
 
     listen 80;
     server_name tfind.ru;
@@ -14,6 +8,14 @@ server {
         alias /usr/src/app/static;
     }
 
+    location /robots.txt {
+        alias /usr/src/app/static/robots.txt;
+    }
+
+    location = /favicon.ico {
+        alias /usr/src/app/static/img/favicon.png;
+    }
+
     location / {
         proxy_pass http://web:8000;
         proxy_set_header Host $host;
@@ -21,4 +23,10 @@ server {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
 
+}
+
+server {
+    listen       80;
+    server_name  www.tfind.ru;
+    return       301 http://tfind.ru$request_uri;
 }
