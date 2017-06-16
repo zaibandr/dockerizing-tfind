@@ -1,6 +1,8 @@
 import os
 import psycopg2
 
+'''
+uncomment when dockerizing scraper + .env file 
 conn = psycopg2.connect(
     database=os.environ['DB_NAME'],
     user=os.environ['DB_USER'],
@@ -8,6 +10,16 @@ conn = psycopg2.connect(
     host=os.environ['SERVER_IP'],
     port='5432'
 )
+'''
+
+conn = psycopg2.connect(
+    database='tfind_db',
+    user='tfind',
+    password='xok43tra',
+    host='185.87.51.174',
+    port='5432'
+)
+
 cur = conn.cursor()
 
 
